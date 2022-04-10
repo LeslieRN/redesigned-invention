@@ -10,6 +10,7 @@ import (
 	"os"
 	"runtime"
 
+	"github.com/LeslieRN/redesigned-invention/control"
 	"github.com/LeslieRN/redesigned-invention/share"
 )
 
@@ -70,3 +71,7 @@ func main() {
  control.JLang(config.Server, tab[3])
  fmt.Println()
 }
+/*
+func JLoginGET(i1, i2 invalid type) {
+	panic("unimplemented")
+}*/
