@@ -56,8 +56,8 @@ func main() {
  if err != nil {
  fmt.Print(err)
  }
- fname := "./data.txt"
- tab := readFile(fname)
+ //fname := "./data.txt"
+ //tab := readFile(fname)
  err = json.Unmarshal([]byte(data), &config)
  if err != nil{
  log.Fatalln(err)
@@ -65,13 +65,9 @@ func main() {
  fmt.Println(" Reporte Libros ")
  fmt.Println()
  control.JLoginGET(config.Server, config.User)
- control.JBook(config.Server, tab[0])
- control.JAuth(config.Server, tab[1])
- control.JEdit(config.Server, tab[2])
- control.JLang(config.Server, tab[3])
+ control.JBook(config.Server, "")
+ control.JAuth(config.Server, "")
+ control.JEdit(config.Server, "")
+control.JLang(config.Server, "")
  fmt.Println()
 }
-/*
-func JLoginGET(i1, i2 invalid type) {
-	panic("unimplemented")
-}*/

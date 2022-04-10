@@ -1,0 +1,5 @@
+2022/04/10 15:44:27 share.go:27: open C:\Users\LeslieRN\Desktop\University\2022-01\Programming_lang\Go\redesigned-invention\config.json: The system cannot find the file specified.
+2022/04/10 15:45:07 book.go:78: Get "https://biblos.herokuapp.com/jlogin/emiliano/emFwYXRhMTU=": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2022/04/10 15:49:50 book.go:120: invalid character 'N' looking for beginning of value
+2022/04/10 15:52:31 book.go:120: invalid character 'N' looking for beginning of value
+2022/04/10 15:57:47 book.go:141: invalid character 'N' looking for beginning of value
