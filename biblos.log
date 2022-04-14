@@ -5,3 +5,9 @@
 2022/04/10 15:57:47 book.go:141: invalid character 'N' looking for beginning of value
 2022/04/10 15:59:00 book.go:141: invalid character 'N' looking for beginning of value
 2022/04/10 15:59:58 book.go:141: invalid character 'N' looking for beginning of value
+2022/04/12 22:26:54 book.go:141: invalid character 'N' looking for beginning of value
+2022/04/12 22:28:15 book.go:141: invalid character 'N' looking for beginning of value
+2022/04/12 22:38:28 book.go:141: json: cannot unmarshal array into Go value of type control.BookZ
+2022/04/13 17:22:58 book.go:99: Get "https://biblos.herokuapp.com/jlogin/emiliano/emFwYXRhMTU=": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2022/04/13 17:24:38 book.go:141: json: cannot unmarshal array into Go value of type control.BookZ
+2022/04/13 20:26:15 book.go:191: json: cannot unmarshal array into Go value of type control.JEditor

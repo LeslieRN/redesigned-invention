@@ -45,7 +45,7 @@ runtime.GOMAXPROCS(runtime.NumCPU())
  scanner := bufio.NewScanner(file)
  for scanner.Scan() {
  line := scanner.Text()
-// fmt.Println(line)
+ fmt.Println(line)
  tabla = append(tabla, line)
  }
  return tabla
@@ -56,18 +56,68 @@ func main() {
  if err != nil {
  fmt.Print(err)
  }
- //fname := "./data.txt"
- //tab := readFile(fname)
+ fmt.Println(" Datos A buscar")
+ fmt.Println()
+ fname := "./data.txt"
+ tab := readFile(fname)
  err = json.Unmarshal([]byte(data), &config)
  if err != nil{
  log.Fatalln(err)
  }
  fmt.Println(" Reporte Libros ")
- fmt.Println()
+ fmt.Println(".................................")
  control.JLoginGET(config.Server, config.User)
- control.JBook(config.Server, "")
- control.JAuth(config.Server, "")
- control.JEdit(config.Server, "")
-control.JLang(config.Server, "")
+ list := (control.JBook(config.Server, tab[0]))
+ list_2 := control.JAuth(config.Server, tab[1])
+ list_4 := control.JEdit(config.Server, tab[2])
+ list_5 :=control.JLang(config.Server, tab[3])
+ print("Libros por el título")
  fmt.Println()
+	for i := 0; i < len(list); i++ {
+		fmt.Println(list[i].Title)
+		fmt.Println(list[i].Author)
+		fmt.Println(list[i].Editor)
+		fmt.Println(list[i].Language)
+		fmt.Println(list[i].Comment)
+		fmt.Println(list[i].Year)
+		fmt.Println(".................................")
+		fmt.Println()
+}
+print("Libros por autor")
+fmt.Println()
+	for i := 0; i < len(list_2); i++ {
+		fmt.Println(list_2[i].Title)
+		fmt.Println(list_2[i].Author)
+		fmt.Println(list_2[i].Editor)
+		fmt.Println(list_2[i].Language)
+		fmt.Println(list_2[i].Comment)
+		fmt.Println(list_2[i].Year)
+		fmt.Println()
+		fmt.Println(".................................")
+		fmt.Println()
+}
+print("Libros por editorial")
+for i := 0; i < len(list_4); i++ {
+	fmt.Println(list_4[i].Title)
+	fmt.Println(list_4[i].Author)
+	fmt.Println(list_4[i].Editor)
+	fmt.Println(list_4[i].Language)
+	fmt.Println(list_4[i].Comment)
+	fmt.Println(list_4[i].Year)
+	fmt.Println(".................................")
+	fmt.Println()
+}
+
+print("Libros por idioma")
+for i := 0; i < len(list_5); i++ {
+	fmt.Println(list_5[i].Title)
+	fmt.Println(list_5[i].Author)
+	fmt.Println(list_5[i].Editor)
+	fmt.Println(list_5[i].Language)
+	fmt.Println(list_5[i].Comment)
+	fmt.Println(list_5[i].Year)
+	fmt.Println(".................................")
+	fmt.Println()
+}
+ //fmt.Println()
 }
