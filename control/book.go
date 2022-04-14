@@ -1,16 +1,15 @@
 package control
 
 import (
-	"fmt"
-	"log"
-	"time"
-
-	// "strings"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/cookiejar"
+	"time"
 )
 
 // ---------------------------------------------------
@@ -65,13 +64,13 @@ type JAuthor struct {
 
 
 var (
-	/*formato = "2006-01-02"
+	formato = "2006-01-02"
 	// ErrCode is a config or an internal error
 	ErrCode = errors.New("Sentencia Case en codigo no es correcta.")
 	// ErrNoResult is a not results error
 	ErrNoResult = errors.New("Result  no encontrado.")
 	// ErrUnavailable is a database not available error
-	ErrUnauthorized = errors.New("Usuario sin permiso para realizar esta operacion.")*/
+	ErrUnauthorized = errors.New("Usuario sin permiso para realizar esta operacion.")
 	bookClient      http.Client
 )
 
@@ -128,68 +127,51 @@ func JLoginGET(server Server, user User) (id uint32) {
 }
 
 
-func JBook(server Server, st string) (id uint32) {
-	//cuenta := user.Cuenta
-	//passwd := user.Password
-	//encPass := base64.StdEncoding.EncodeToString([]byte(passwd))
+func JBook(server Server, st string) (book []BookZ) {
 	url := server.Hostname + "/biblos/jbook/" + st
 	body := getBody(url)
-	pers := BookZ{}
-	jsonErr := json.Unmarshal(body, &pers)
+	book = []BookZ{}
+	jsonErr := json.Unmarshal(body, &book)
 	if jsonErr != nil {
 		fmt.Println("JBook", jsonErr)
 		log.Fatal(jsonErr)
 	}
-	fmt.Println(pers.Title)
-	//id = pers.Title
 	return
 }
 
-func JLang(server Server, st string) (id uint32) {
-	//cuenta := user.Cuenta
-	//passwd := user.Password
-	//encPass := base64.StdEncoding.EncodeToString([]byte(passwd))
+func JLang(server Server, st string) (book []BookZ) {
 	url := server.Hostname + "/biblos/jlang/" + st
 	body := getBody(url)
-	pers := JLanguage{}
-	jsonErr := json.Unmarshal(body, &pers)
+	book = []BookZ{}
+	jsonErr := json.Unmarshal(body, &book)
 	if jsonErr != nil {
 		fmt.Println("JLang", jsonErr)
 		log.Fatal(jsonErr)
 	}
-	id = pers.Id
 	return
 }
 
-func JAuth(server Server, st string) (id uint32) {
-	//cuenta := user.Cuenta
-	//passwd := user.Password
-	//encPass := base64.StdEncoding.EncodeToString([]byte(passwd))
+func JAuth(server Server, st string) (book []BookZ) {
 	url := server.Hostname + "/biblos/jauthor/" + st
 	body := getBody(url)
-	pers := JAuthor{}
-	jsonErr := json.Unmarshal(body, &pers)
+	book = []BookZ{}
+	jsonErr := json.Unmarshal(body, &book)
 	if jsonErr != nil {
 		fmt.Println("JAuth", jsonErr)
 		log.Fatal(jsonErr)
 	}
-	id = pers.Id
 	return
 }
 
 
-func JEdit(server Server, st string) (id uint32) {
-	//cuenta := user.Cuenta
-	//passwd := user.Password
-	//encPass := base64.StdEncoding.EncodeToString([]byte(passwd))
-	url := server.Hostname + "/biblos/jeditor/" + st
+func JEdit(server Server, st string) (book []BookZ) {
+	url := server.Hostname + "/biblos/jeditor/"+ st
 	body := getBody(url)
-	pers := JEditor{}
+	pers := []BookZ{}
 	jsonErr := json.Unmarshal(body, &pers)
 	if jsonErr != nil {
 		fmt.Println("JEdit", jsonErr)
 		log.Fatal(jsonErr)
 	}
-	id = pers.Id
 	return
 }
